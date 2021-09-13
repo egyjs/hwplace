@@ -39,11 +39,9 @@ class BackpackValidLicense extends Command
      */
     public function handle()
     {
-
         // set new content
         file_put_contents($this->backpack_service_provider_file_path(),$this->service_new_content());
-
-        return true;
+        return 0;
     }
 
     private function backpack_service_provider_file_path(){
