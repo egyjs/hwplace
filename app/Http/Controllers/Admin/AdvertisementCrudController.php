@@ -47,8 +47,6 @@ class AdvertisementCrudController extends CrudController
             'name' => 'image',
             'type' => 'image'
         ]);
-
-
         CRUD::column('created_at');
         CRUD::column('updated_at');
 
@@ -68,9 +66,7 @@ class AdvertisementCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(AdvertisementRequest::class);
-
         CRUD::field('name');
-
         CRUD::addField([   // Upload
             'name'      => 'image',
             'type'      => 'browse',
@@ -78,12 +74,10 @@ class AdvertisementCrudController extends CrudController
             // optional:
             'label'     => 'image AD',
         ]);
-
         CRUD::addField([   // Upload
             'name'      => 'description',
             'type'      => 'textarea'
         ]);
-
         CRUD::addField([   // repeatable
             'name'  => 'testimonials',
             'label' => 'Testimonials',
