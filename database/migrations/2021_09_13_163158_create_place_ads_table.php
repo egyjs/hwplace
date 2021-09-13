@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdvertisementsTable extends Migration
+class CreatePlaceAdsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateAdvertisementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('advertisements', function (Blueprint $table) { // home advertisements
+        Schema::create('place_ads', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
+
+            $table->longText('image');
+            $table->foreignId('place_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateAdvertisementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisements');
+        Schema::dropIfExists('place_ads');
     }
 }

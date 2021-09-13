@@ -15,7 +15,7 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 class AdvertisementCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation ;//{store as traitStore;}
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
@@ -44,8 +44,10 @@ class AdvertisementCrudController extends CrudController
         CRUD::column('name');
         CRUD::column('description');
         CRUD::addColumn([
-            'name' => 'image',
-            'type' => 'image'
+            'name'   => 'places',
+            'type'   => 'relationship',
+            'entity' => 'places', // the method that defines the relationship in your Model
+            'label'  => 'Places',
         ]);
         CRUD::column('created_at');
         CRUD::column('updated_at');
@@ -67,36 +69,25 @@ class AdvertisementCrudController extends CrudController
     {
         CRUD::setValidation(AdvertisementRequest::class);
         CRUD::field('name');
-        CRUD::addField([   // Upload
-            'name'      => 'image',
-            'type'      => 'browse',
-            'upload'    => true,
-            // optional:
-            'label'     => 'image AD',
-        ]);
+
+//        CRUD::addField([   // Upload
+//            'name'      => 'image',
+//            'type'      => 'browse',
+//            'upload'    => true,
+//            // optional:
+//            'label'     => 'image AD',
+//        ]);
+
         CRUD::addField([   // Upload
             'name'      => 'description',
             'type'      => 'textarea'
         ]);
-        CRUD::addField([   // repeatable
-            'name'  => 'testimonials',
-            'label' => 'Testimonials',
-            'type'  => 'repeatable',
-            'fields' => [
-                [
-                    'name'   => 'place',
-                    'type'   => 'select2',
-                    'entity' => 'place', // the method that defines the relationship in your Model
-                    'label'  => 'Place',
-                ],
-            ],
 
-            // optional
-            'new_item_label'  => 'Add Group', // customize the text of the button
-            'init_rows' => 1, // number of empty rows to be initialized, by default 1
-            'min_rows' => 2, // minimum rows allowed, when reached the "delete" buttons will be hidden
-            'max_rows' => 2, // maximum rows allowed, when reached the "new item" button will be hidden
-
+        CRUD::addField([
+            'name'   => 'places',
+            'type'   => 'relationship',
+            'entity' => 'places', // the method that defines the relationship in your Model
+            'label'  => 'Places',
         ]);
 
 

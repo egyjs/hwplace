@@ -12,3 +12,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('branch-group') }}'><i class='nav-icon la la-question'></i> Branch groups</a></li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('advertisement') }}'><i class='nav-icon la la-question'></i> Advertisements</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('place-ad') }}'><i class='nav-icon la la-question'></i> Place ads</a></li>

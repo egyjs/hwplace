@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
+/**
+ * @method static insert(array $array)
+ */
 class Section extends Model
 {
     use CrudTrait;

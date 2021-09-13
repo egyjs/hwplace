@@ -2,9 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use App\Models\Country;
+use App\Models\Section;
+use App\Models\State;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,9 +26,24 @@ class DatabaseSeeder extends Seeder
             'iso'=>'EG',
             'currency'=>'EGP',
             'currency_code'=>'£',
-
         ]);
 
+        State::create([
+            'name' => 'القاهره',
+            'description' => 'القاهرة هي عاصمة جمهورية مصر العربية وأكبر وأهم مدنها على الإطلاق، وتعد أكبر مدينة عربية من حيث تعداد السكان والمساحة، وتحتل المركز الثاني أفريقياً والسابع عشر عالمياً من حيث التعداد السكاني، يبلغ عدد سكانها 21,322,750 مليون نسمة حسب إحصائيات عام 2021. يمثلون 20% من إجمالي تعداد سكان مصر. ',
+            'lat'=>'30.0445',
+            'lng'=>'31.2388',
+        ]);
+
+        City::create([
+            'name' => 'المعادي',
+            'description' => 'يشتهر حي المعادي الراقي بشوارعه الهادئة والمشجّرة والمطاعم العصرية. وتنتشر المطاعم الأوروبية والمصرية على طول شارع 9، إلى جانب المقاهي المتخصصة بالمأكولات العضوية والنباتية. وتقدم أماكن الشرب الهادئة التي تشكل الوجهة المفضّلة لدى الحشود الأجنبية مشروبات كوكتيل وتعرض موسيقى حية وألعاب البارات. ويمتد ممشى الكورنيش على طول نهر النيل، الذي يمكن التجول فيه بواسطة الفلوكة، وهي قارب شراعي تقليدي خشبي.',
+            'state_id'=> 1 ,
+            'lat'=>'29.9667',
+            'lng'=>'31.2500',
+        ]);
+
+        //---
         User::create([
             'name' => 'SUPER_ADMIN',
             'email' => 'hawidahany112@gmail.com',
@@ -32,6 +51,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('pass1029'),
 
         ]);
+
+        //---
+        Section::insert([
+            ['name' => 'مطاعم','icon'=>'-','keywords'=>'-','created_at'=>Carbon::now()],
+            ['name' => 'صيدليات','icon'=>'-','keywords'=>'-','created_at'=>Carbon::now()],
+            ['name' => 'هايبرماركت','icon'=>'-','keywords'=>'-','created_at'=>Carbon::now()],
+        ]);
+
+
+
         // \App\Models\User::factory(10)->create();
     }
 }

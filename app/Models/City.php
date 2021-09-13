@@ -5,6 +5,9 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static create(string[] $array)
+ */
 class City extends Model
 {
     use CrudTrait;

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PlaceRequest;
+use App\Http\Requests\PlaceAdRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class PlaceCrudController
+ * Class PlaceAdCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class PlaceCrudController extends CrudController
+class PlaceAdCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,10 +26,9 @@ class PlaceCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Place::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/place');
-        CRUD::setEntityNameStrings('place', 'places');
-        $this->crud->setOperationSetting('setFromDb', false);
+        CRUD::setModel(\App\Models\PlaceAd::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/place-ad');
+        CRUD::setEntityNameStrings('place ad', 'place ads');
     }
 
     /**
@@ -40,24 +39,19 @@ class PlaceCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-        CRUD::column('city_id');
-        CRUD::column('section_id');
-        CRUD::column('name');
-        CRUD::column('description');
-        CRUD::addColumn([
-            'name' => 'images',
-            'type' => 'upload_multiple',
-            'prefix' =>'storage/'
 
+        CRUD::addColumn([
+            'name' => 'image',
+            'type' => 'image',
+            'width' => '400px',
+            'height' => ''
         ]);
-        CRUD::column('google_map_location');
-        CRUD::column('website');
-        CRUD::column('rates');
-        CRUD::column('is_top');
-        CRUD::column('keywords');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+
+        CRUD::addColumn([
+            'name' => 'place_id',
+            'type' => 'relationship',
+        ]);
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -74,44 +68,19 @@ class PlaceCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(PlaceRequest::class);
+        CRUD::setValidation(PlaceAdRequest::class);
 
-//        CRUD::field('id');
-
-        CRUD::field('name');
-        CRUD::field('description');
-        CRUD::addField([   // Upload
-            'name'      => 'images',
-            'upload'    => true,
-            'type'      => 'upload_multiple',
-            // optional:
-//            'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
-            'label'     => 'Photos',
-            'allows_null' => false,
-            'prefix' =>'storage/'
-        ]);
-        CRUD::field('google_map_location');
-        CRUD::addField([
-            'name' => 'website',
-            'type' => 'url'
-        ]);
-//        CRUD::field('rates');
-//        CRUD::field('keywords');
+//        CRUD::setFromDb(); // fields
         $this->crud->addField([
-            'name'=>'keywords',
-            'type'=>'text',
+            'name' => 'place_id',
+            'type' => 'relationship',
         ]);
-        CRUD::field('is_top');
-        CRUD::field('city_id');
-        CRUD::field('section_id');
-        CRUD::addField([
-            'name'=>'is_active',
-            'type' => 'checkbox',
-            'value'=> true
-        ]);
-//        CRUD::field('created_at');
-//        CRUD::field('updated_at');
 
+        $this->crud->addField([
+            'name' => 'image',
+            'type' => 'browse',
+            'crop' => true
+        ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

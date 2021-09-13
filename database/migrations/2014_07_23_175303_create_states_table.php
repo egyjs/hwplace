@@ -18,7 +18,7 @@ class CreateStatesTable extends Migration
 
             $table->string('name');
             $table->longText('description')->nullable();
-            $table->string('iso',2)->nullable(); // NY
+            $table->string('C',2)->nullable(); // NY
 
             $table->foreignId('country_id')->default(1)->constrained();
 

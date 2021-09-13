@@ -22,4 +22,5 @@ Route::group([
     Route::crud('place', 'PlaceCrudController');
 //    Route::crud('branch-group', 'BranchGroupCrudController');
     Route::crud('advertisement', 'AdvertisementCrudController');
+    Route::crud('place-ad', 'PlaceAdCrudController');
 }); // this should be the absolute last line of this file

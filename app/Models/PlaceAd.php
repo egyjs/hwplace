@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Advertisement extends Model
+class PlaceAd extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Advertisement extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'advertisements';
+    protected $table = 'place_ads';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -34,9 +34,10 @@ class Advertisement extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function places()
+
+    public function place()
     {
-        return $this->belongsToMany(Place::class, 'advertisement_places');
+        return $this->belongsTo(Place::class);
     }
     /*
     |--------------------------------------------------------------------------
