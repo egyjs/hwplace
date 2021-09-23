@@ -7,18 +7,20 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-fileinfo": "*",
+        "ext-pdo": "*",
         "backpack/crud": "4.1.*",
         "backpack/filemanager": "^1.1",
         "backpack/logmanager": "^4.0",
         "backpack/permissionmanager": "^6.0",
         "backpack/settings": "^3.0",
+        "consoletvs/charts": "6.*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "staudenmeir/eloquent-json-relations": "^1.1",
-        "ext-pdo": "*"
+        "livewire/livewire": "^2.5",
+        "staudenmeir/eloquent-json-relations": "^1.1"
     },
     "require-dev": {
         "backpack/generators": "^3.1",

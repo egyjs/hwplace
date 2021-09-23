@@ -42,6 +42,13 @@ class StateCrudController extends CrudController
         CRUD::column('id');
         CRUD::column('name');
         CRUD::column('description');
+//        CRUD::addColumn([
+//            'name'=>'description',
+//            'type'     => 'closure',
+//            'function' => function($entry) {
+//                return "<span>". strip_tags($entry->description). "</span>";
+//            }
+//        ]);
         CRUD::column('iso');
         CRUD::column('country_id');
         CRUD::column('lat');
@@ -69,7 +76,10 @@ class StateCrudController extends CrudController
 
 //        CRUD::field('id');
         CRUD::field('name');
-        CRUD::field('description');
+        CRUD::addField([
+            'name' => 'description',
+            'type' => 'tinymce'
+        ]);
         CRUD::field('iso');
         CRUD::field('country_id');
         CRUD::field('lat');

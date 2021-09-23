@@ -69,7 +69,10 @@ class CityCrudController extends CrudController
 
 //        CRUD::field('id');
         CRUD::field('name');
-        CRUD::field('description');
+        CRUD::addField([
+            'name' => 'description',
+            'type' => 'tinymce'
+        ]);
         CRUD::field('iso');
         CRUD::field('state_id');
         CRUD::field('lat');

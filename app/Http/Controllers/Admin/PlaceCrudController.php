@@ -49,7 +49,6 @@ class PlaceCrudController extends CrudController
             'name' => 'images',
             'type' => 'upload_multiple',
             'prefix' =>'storage/'
-
         ]);
         CRUD::column('google_map_location');
         CRUD::column('website');
@@ -79,7 +78,10 @@ class PlaceCrudController extends CrudController
 //        CRUD::field('id');
 
         CRUD::field('name');
-        CRUD::field('description');
+        CRUD::addField([
+            'name' => 'description',
+            'type' => 'tinymce'
+        ]);
         CRUD::addField([   // Upload
             'name'      => 'images',
             'upload'    => true,
