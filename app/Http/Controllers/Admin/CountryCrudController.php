@@ -45,20 +45,10 @@ class CountryCrudController extends CrudController
         CRUD::column('currency_code');
         $this->crud->addColumn([
             'name' => 'flag', // The db column name
-//            'label' => "Profile image", // Table column heading
-            'type' => 'image',
-
-            // OPTIONALS
-            // 'prefix' => 'folder/subfolder/',
-            // image from a different disk (like s3 bucket)
-            // 'disk' => 'disk-name',
-
-            // optional width/height if 25px is not ok with you
-            // 'height' => '30px',
-            // 'width' => '30px',
+            'type' => 'browse',
         ]);
         CRUD::column('currency');
-        CRUD::column('active');
+        CRUD::column('active')->type('check');
         CRUD::column('iso');
         CRUD::column('un_code');
         CRUD::column('tax_percentage');
@@ -97,7 +87,7 @@ class CountryCrudController extends CrudController
         CRUD::addField([
             'label' => "Country Flag",
             'name' => "flag",
-            'type' => 'image',
+            'type' => 'browse',
             'crop' => true, // set to true to allow cropping, false to disable
 //            'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
         ]);

@@ -84,7 +84,7 @@ class StateCrudController extends CrudController
         CRUD::field('country_id');
         CRUD::field('lat');
         CRUD::field('lng');
-        CRUD::field('active');
+        CRUD::field('active')->default(true);
 //        CRUD::field('created_at');
 //        CRUD::field('updated_at');
 

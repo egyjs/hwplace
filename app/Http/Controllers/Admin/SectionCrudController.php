@@ -44,7 +44,7 @@ class SectionCrudController extends CrudController
         $this->crud->addColumn([
             'name' => 'icon', // The db column name
 //            'label' => "Profile image", // Table column heading
-            'type' => 'image',
+            'type' => 'image', // Table column
 
             // OPTIONALS
             // 'prefix' => 'folder/subfolder/',
@@ -80,11 +80,9 @@ class SectionCrudController extends CrudController
         CRUD::field('name');
         CRUD::addField([
             'name' => 'icon',
-            'type' => 'image',
-            'crop' => true,
-            'aspect_ratio' => 1
+            'type' => 'browse',
         ]);
-        CRUD::field('keywords');
+        CRUD::field('keywords')->type('tags');
 //        CRUD::field('created_at');
 //        CRUD::field('updated_at');
 

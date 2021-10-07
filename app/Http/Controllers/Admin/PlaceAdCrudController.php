@@ -44,7 +44,6 @@ class PlaceAdCrudController extends CrudController
             'name' => 'image',
             'type' => 'image',
             'width' => '400px',
-            'height' => ''
         ]);
 
         CRUD::addColumn([
@@ -70,7 +69,7 @@ class PlaceAdCrudController extends CrudController
     {
         CRUD::setValidation(PlaceAdRequest::class);
 
-//        CRUD::setFromDb(); // fields
+        //      CRUD::setFromDb(); // fields
         $this->crud->addField([
             'name' => 'place_id',
             'type' => 'relationship',

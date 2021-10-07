@@ -48,7 +48,7 @@ class PlaceCrudController extends CrudController
         CRUD::addColumn([
             'name' => 'images',
             'type' => 'upload_multiple',
-            'prefix' =>'storage/'
+//            'prefix' =>'storage/'
         ]);
         CRUD::column('google_map_location');
         CRUD::column('website');
@@ -84,13 +84,13 @@ class PlaceCrudController extends CrudController
         ]);
         CRUD::addField([   // Upload
             'name'      => 'images',
-            'upload'    => true,
-            'type'      => 'upload_multiple',
+         //   'upload'    => true,
+            'type'      => 'browse_multiple',
             // optional:
 //            'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
-            'label'     => 'Photos',
-            'allows_null' => false,
-            'prefix' =>'storage/'
+//            'label'     => 'Photos',
+//            'allows_null' => false,
+//            'prefix' =>'storage/'
         ]);
         CRUD::field('google_map_location');
         CRUD::addField([
@@ -101,7 +101,7 @@ class PlaceCrudController extends CrudController
 //        CRUD::field('keywords');
         $this->crud->addField([
             'name'=>'keywords',
-            'type'=>'text',
+            'type'=>'tags',
         ]);
         CRUD::field('is_top');
         CRUD::field('city_id');

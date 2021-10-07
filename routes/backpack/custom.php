@@ -24,4 +24,5 @@ Route::group([
     Route::crud('advertisement', 'AdvertisementCrudController');
     Route::crud('place-ad', 'PlaceAdCrudController');
     Route::get('charts/weekly-users', 'Charts\WeeklyUsersChartController@response')->name('charts.weekly-users.index');
+    Route::crud('section-ad', 'SectionAdCrudController');
 }); // this should be the absolute last line of this file

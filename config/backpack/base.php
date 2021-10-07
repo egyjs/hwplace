@@ -17,7 +17,7 @@ return [
 
     // Direction, according to language
     // (left-to-right vs right-to-left)
-    'html_direction' => 'rtl',
+    'html_direction' => 'ltr',
 
     // ----
     // HEAD

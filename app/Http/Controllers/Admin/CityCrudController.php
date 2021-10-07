@@ -46,7 +46,7 @@ class CityCrudController extends CrudController
         CRUD::column('state_id');
         CRUD::column('lat');
         CRUD::column('lng');
-        CRUD::column('active');
+        CRUD::column('active')->type('check');
         CRUD::column('created_at');
         CRUD::column('updated_at');
 
