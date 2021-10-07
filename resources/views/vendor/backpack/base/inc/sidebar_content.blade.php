@@ -14,3 +14,5 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('advertisement') }}'><i class='nav-icon la la-question'></i> Advertisements</a></li>
 {{--<li class='nav-item'><a class='nav-link' href='{{ backpack_url('place-ad') }}'><i class='nav-icon la la-question'></i> Place ads</a></li>--}}
 
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('section-ad') }}'><i class='nav-icon la la-question'></i> Section ads</a></li>

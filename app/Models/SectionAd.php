@@ -34,7 +34,15 @@ class SectionAd extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function section(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Section::class);
+    }
 
+    public function place(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Place::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

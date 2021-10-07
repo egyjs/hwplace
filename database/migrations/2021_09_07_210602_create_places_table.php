@@ -23,13 +23,13 @@ class CreatePlacesTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->json('images');
-            $table->longText('google_map_location'); // url
-            $table->longText('website');
+            $table->longText('google_map_location')->nullable(); // url
+            $table->longText('website')->nullable();
 
             $table->integer('rates')->default(null)->nullable();
 
             $table->boolean('is_top')->default(false); // top 10
-            $table->longText('keywords');
+            $table->longText('keywords')->nullable();
 
             $table->boolean('is_active')->default(true); // active
             $table->timestamps();

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PlaceAdRequest;
+use App\Http\Requests\SectionAdRequest;
+use App\Models\Place;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class PlaceAdCrudController
+ * Class SectionAdCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class PlaceAdCrudController extends CrudController
+class SectionAdCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +27,9 @@ class PlaceAdCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\PlaceAd::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/place-ad');
-        CRUD::setEntityNameStrings('place ad', 'place ads');
+        CRUD::setModel(\App\Models\SectionAd::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/section-ad');
+        CRUD::setEntityNameStrings('section ad', 'section ads');
     }
 
     /**
@@ -40,17 +41,7 @@ class PlaceAdCrudController extends CrudController
     protected function setupListOperation()
     {
 
-        CRUD::addColumn([
-            'name' => 'image',
-            'type' => 'image',
-            'width' => '400px',
-        ]);
-
-        CRUD::addColumn([
-            'name' => 'place_id',
-            'type' => 'relationship',
-        ]);
-
+        CRUD::setFromDb();
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -67,11 +58,10 @@ class PlaceAdCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(PlaceAdRequest::class);
+        CRUD::setValidation(SectionAdRequest::class);
 
-        //      CRUD::setFromDb(); // fields
         $this->crud->addField([
-            'name' => 'place_id',
+            'name' => 'section_id',
             'type' => 'relationship',
         ]);
 
@@ -79,11 +69,13 @@ class PlaceAdCrudController extends CrudController
             'name' => 'image',
             'type' => 'browse',
         ]);
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
+
+        $this->crud->addField([
+            'name'       => 'place_id',
+//            'label' => 'Place',
+            'type'       => 'relationship',
+        ]);
+
     }
 
     /**
