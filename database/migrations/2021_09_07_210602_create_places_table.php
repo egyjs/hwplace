@@ -21,14 +21,18 @@ class CreatePlacesTable extends Migration
 
 
             $table->string('name');
+            $table->string('slug');
             $table->longText('description');
+            $table->longText('image'); // todo: add to controller as main image
             $table->json('images');
             $table->longText('google_map_location')->nullable(); // url
             $table->longText('website')->nullable();
 
             $table->integer('rates')->default(null)->nullable();
 
+            $table->boolean('view_rates')->default(true)->nullable();
             $table->boolean('is_top')->default(false); // top 10
+
             $table->longText('keywords')->nullable();
 
             $table->boolean('is_active')->default(true); // active

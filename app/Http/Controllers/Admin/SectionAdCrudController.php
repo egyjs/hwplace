@@ -43,6 +43,9 @@ class SectionAdCrudController extends CrudController
 
         CRUD::setFromDb();
 
+        CRUD::column('image')->type('image')->width('400px')->height('auto');
+        CRUD::column('section_id')->type('relationship');
+        CRUD::column('place_id')->type('relationship');
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -72,8 +75,7 @@ class SectionAdCrudController extends CrudController
 
         $this->crud->addField([
             'name'       => 'place_id',
-//            'label' => 'Place',
-            'type'       => 'relationship',
+            'type' => 'relationship',
         ]);
 
     }

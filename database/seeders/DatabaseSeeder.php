@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Advertisement;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Place;
 use App\Models\Section;
 use App\Models\State;
 use App\Models\User;
@@ -28,20 +30,8 @@ class DatabaseSeeder extends Seeder
             'currency_code'=>'£',
         ]);
 
-        State::create([
-            'name' => 'القاهره',
-            'description' => 'القاهرة هي عاصمة جمهورية مصر العربية وأكبر وأهم مدنها على الإطلاق، وتعد أكبر مدينة عربية من حيث تعداد السكان والمساحة، وتحتل المركز الثاني أفريقياً والسابع عشر عالمياً من حيث التعداد السكاني، يبلغ عدد سكانها 21,322,750 مليون نسمة حسب إحصائيات عام 2021. يمثلون 20% من إجمالي تعداد سكان مصر. ',
-            'lat'=>'30.0445',
-            'lng'=>'31.2388',
-        ]);
-
-        City::create([
-            'name' => 'المعادي',
-            'description' => 'يشتهر حي المعادي الراقي بشوارعه الهادئة والمشجّرة والمطاعم العصرية. وتنتشر المطاعم الأوروبية والمصرية على طول شارع 9، إلى جانب المقاهي المتخصصة بالمأكولات العضوية والنباتية. وتقدم أماكن الشرب الهادئة التي تشكل الوجهة المفضّلة لدى الحشود الأجنبية مشروبات كوكتيل وتعرض موسيقى حية وألعاب البارات. ويمتد ممشى الكورنيش على طول نهر النيل، الذي يمكن التجول فيه بواسطة الفلوكة، وهي قارب شراعي تقليدي خشبي.',
-            'state_id'=> 1 ,
-            'lat'=>'29.9667',
-            'lng'=>'31.2500',
-        ]);
+        $this->call(StatesTableSeeder::class);
+        $this->call(CitiesTableSeeder::class);
 
         //---
         User::create([
@@ -61,6 +51,8 @@ class DatabaseSeeder extends Seeder
 
 
 
-        // \App\Models\User::factory(10)->create();
+         Place::factory(10)->create();
+         Advertisement::factory(5)->create();
+
     }
 }

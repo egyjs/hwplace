@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Place;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
+Route::view('/search/{section_id}', 'section')->name('search');
+
+//place
+Route::get('place/{slug}', Place::class)->name('place');
+

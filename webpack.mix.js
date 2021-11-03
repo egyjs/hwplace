@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+    .sass('resources/scss/app.scss', 'public/css');
+    // .sass('resources/scss/search_page.scss', 'public/css');
+
+//mix.browserSync('localhost:8000');

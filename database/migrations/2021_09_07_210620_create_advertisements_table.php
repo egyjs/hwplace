@@ -17,6 +17,11 @@ class CreateAdvertisementsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
+
+            $table->integer('lft')->unsigned()->nullable();
+            $table->integer('rgt')->unsigned()->nullable();
+            $table->integer('depth')->unsigned()->default(1);
+
             $table->timestamps();
         });
     }

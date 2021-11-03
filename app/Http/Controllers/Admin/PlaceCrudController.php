@@ -41,9 +41,9 @@ class PlaceCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
+        CRUD::column('name');
         CRUD::column('city_id');
         CRUD::column('section_id');
-        CRUD::column('name');
         CRUD::column('description');
         CRUD::addColumn([
             'name' => 'images',

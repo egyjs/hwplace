@@ -4,7 +4,11 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @method static where(string $key, \Illuminate\Routing\Route|object|string|null $section_id)
+ */
 class SectionAd extends Model
 {
     use CrudTrait;
@@ -34,12 +38,15 @@ class SectionAd extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function section(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    /**
+     * @return BelongsTo
+     */
+    public function section(): BelongsTo
     {
         return $this->belongsTo(Section::class);
     }
 
-    public function place(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function place(): BelongsTo
     {
         return $this->belongsTo(Place::class);
     }
