@@ -1,7 +1,7 @@
 <!--start navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img src="https://i.imgur.com/9KNZKJU.png" alt="Logo"/></a>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="https://i.imgur.com/9KNZKJU.png" alt="Logo"/></a>
         <button
             class="navbar-toggler"
             type="button"
@@ -16,7 +16,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary rounded-pill" href="#">الرئيسية
+                    <a class="nav-link btn btn-primary rounded-pill" href="/">
+                        الرئيسية
                     </a>
                 </li>
                 <li class="nav-item">

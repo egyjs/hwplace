@@ -1,4 +1,4 @@
-<div class="container mx-auto p-5" id="Places">
+<div class="container-fluid mx-auto p-5" id="Places">
 
     @if($sectionAds->count())
     <div class="announcement">

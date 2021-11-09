@@ -1,7 +1,7 @@
 <div class="">
     <!--start filter section-->
     <div class="filter">
-        <div class="container">
+        <div class="container-fluid">
             <div class="form-filter1">
                 <form method="post" wire:submit.prevent="search">
                     <div class="row">

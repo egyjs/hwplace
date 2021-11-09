@@ -32,7 +32,7 @@ class HomeSearch extends Component
         $this->selectedCountry = $this->countries->first()->id;
 
 
-        $this->states = State::where('country_id',$this->selectedCountry)->get();
+        $this->states = State::where('country_id',$this->selectedCountry)->whereHas('places')->get();
 
         $this->cities = collect();
         $this->places = collect();

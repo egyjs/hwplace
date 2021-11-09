@@ -39,7 +39,7 @@ class Place extends Model
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = [
-        'images'=>'array',
+        'images'=> 'array',
         'is_top' => 'boolean'
     ];
 
@@ -88,14 +88,14 @@ class Place extends Model
     |--------------------------------------------------------------------------
     */
 
-//    public function setImagesAttribute($value)
-//    {
-//       // $attribute_name = "images";
-//       // $disk = "public";
-//       // $destination_path = "image_place";
-//
-//        //   $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
-//    }
+    public function getImagesAttribute()
+    {
+        // return json if is string
+        if (is_string($this->attributes['images']))
+            return json_decode($this->attributes['images']);
+
+        return $this->attributes['images'];
+    }
 
     /*
     |--------------------------------------------------------------------------

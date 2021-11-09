@@ -1,4 +1,4 @@
-<div class="container mx-auto py-5" id="announcement">
+<div class="container-fluid mx-auto py-5" id="announcement">
     <div class="row">
         @foreach($advertisements as $advertisement)
             <div class="card bg-gray">

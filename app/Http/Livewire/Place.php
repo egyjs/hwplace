@@ -10,10 +10,10 @@ use App\Models\Place as PlaceModel;
  */
 class Place extends Component
 {
-    public $post;
+    public $place;
 
     public function mount($slug){
-        $this->post = PlaceModel::where('slug', $slug)->firstOrFail();
+        $this->place = PlaceModel::where('slug', $slug)->firstOrFail();
     }
     public function render()
     {
