@@ -51,7 +51,7 @@
     <div class="grid-sizer"></div>
     @if ($multiple)
         <input type="hidden" data-marker="multipleBrowseInput" name="{{ $field['name'] }}"
-               value="{{ ($value) }}">
+               value="{{ is_array($value)?json_encode($value):$value }}">
     @else
         <input type="text" data-marker="multipleBrowseInput" name="{{ $field['name'] }}" value="{{ $value }}"
                @include('crud::fields.inc.attributes') readonly>
