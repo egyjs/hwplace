@@ -53,6 +53,11 @@
         }
     },
     "scripts": {
+         "script:install": [
+            "@php artisan backpack:install",
+            "@php artisan backpack:filemanager:install",
+            "@php artisan migrate:refresh --seed"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
