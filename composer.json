@@ -27,7 +27,7 @@
         "staudenmeir/eloquent-json-relations": "^1.1"
     },
     "platform": {
-        "php": ">=7.3"
+        "php": ">=7.4"
     },
     "require-dev": {
         "backpack/generators": "^3.1",
