@@ -57,8 +57,6 @@
                @include('crud::fields.inc.attributes') readonly>
     @endif
 </div>
-
-
 @if (isset($field['hint']))
     <p class="help-block">{!! $field['hint'] !!}</p>
 @endif

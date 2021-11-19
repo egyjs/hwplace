@@ -23,7 +23,7 @@ class CreatePlacesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->longText('description');
-            $table->longText('image'); // todo: add to controller as main image
+            $table->longText('image');
             $table->json('images');
             $table->longText('google_map_location')->nullable(); // url
             $table->longText('website')->nullable();
