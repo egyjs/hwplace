@@ -86,7 +86,7 @@ class PlaceCrudController extends CrudController
 
         CRUD::addField([   // Upload
             'name'      => 'image',
-            'type'      => 'browse_multiple',
+            'type'      => 'browse',
         ]);
 
         CRUD::addField([   // Upload
