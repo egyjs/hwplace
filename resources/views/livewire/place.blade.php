@@ -37,6 +37,9 @@
             text-transform: uppercase;
             float: left;
         }
+        iframe{
+            width: 100% !important;
+        }
     </style>
 @endpush
 @if($place->images)
