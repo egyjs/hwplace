@@ -40,6 +40,13 @@
         iframe{
             width: 100% !important;
         }
+        .place-info{
+            float: left;
+            max-width: 100%;
+            border: 2px solid #ddd;
+            padding: 12px;
+            margin-right: 9px;
+        }
     </style>
 @endpush
 @if($place->images)
@@ -87,7 +94,7 @@
                     $place_keywords = '<div class="badge badge-primary place-keyword">'.implode('</div><div class="badge badge-primary place-keyword">',$place_keywords).'</div>';
 
                     $keyword = ';;;';
-                    $divWithKeyword = "<div class='place-info align-left' ".'style="float: left; border: 2px solid #ddd; padding: 12px; margin-right: 9px; "'.">$keyword</div>";
+                    $divWithKeyword = "<div class='place-info align-left' >$keyword</div>";
 
 
                     $string = $place->description;
