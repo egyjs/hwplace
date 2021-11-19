@@ -24,8 +24,9 @@ class PlaceFactory extends Factory
     public function definition()
     {
         $images = $this->randomImage();
+        $name = $this->faker->name;
         return [
-            'name' => $this->faker->name,
+            'name' => $name,
             'description' => $this->text(rand(1, 10)),
 
             'city_id'=> City::inRandomOrder()->first()->id,
@@ -33,6 +34,7 @@ class PlaceFactory extends Factory
             'images' => $this->randomImage(),
             'image' => $images[0],
             'website'=> $this->faker->url(),
+            'google_map_location'=> '<div style="width: 100%"><iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q='.urlencode($name).'&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">vehicle gps tracker</a></iframe></div>',
             'view_rates' => rand(0,1),
             'rates' => rand(0,5),
             'is_top' => rand(0,1),

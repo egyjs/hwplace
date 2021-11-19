@@ -32,6 +32,11 @@
             transition-property: filter;
             transition-duration: 0.60s;
         }
+        .place-keyword {
+            margin: 5px 4px 4px 0;
+            text-transform: uppercase;
+            float: left;
+        }
     </style>
 @endpush
 @if($place->images)
@@ -60,14 +65,38 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <h1>{{ $place->name }}</h1>
+                <h1>{{ $place->name }}
+                    <small class="text-muted">
+                        <small>
+                            <small>
+                                {{ $place->city->name }}
+                                <a href="{{ route('search',$place->section->id) }}"><small>({{ $place->section->name }})</small></a>
+                            </small>
+                        </small>
+                    </small>
+                </h1>
                 @php
+                    $iframe = $place->google_map_location;
+                    $website = '<a style="direction: ltr;" class="place-website-link btn btn-dark btn-block " target="_blank" href="'.$place->website.'">'.$place->website.'</a>';
+                    $place_keywords = $place->keywords;
+                    $place_keywords = explode(',',$place_keywords);
+                    $place_keywords = '<div class="badge badge-primary place-keyword">'.implode('</div><div class="badge badge-primary place-keyword">',$place_keywords).'</div>';
+
+                    $keyword = ';;;';
+                    $divWithKeyword = "<div class='place-info align-left' ".'style="float: left; border: 2px solid #ddd; padding: 12px; margin-right: 9px; "'.">$keyword</div>";
+
+
                     $string = $place->description;
-                    $string = wordwrap($string, 150, ";;", true);
-                    $strings = explode(";;", $string);
-                    dd($strings);
+                    $stringExploded = explode(" ",$string);
+                    if (count($stringExploded) > 100){
+                        array_splice( $stringExploded, 100, 0, [$divWithKeyword] );
+                    }else{
+                        $stringExploded[] = $divWithKeyword;
+                    }
+                    $string = implode(" ",$stringExploded);
+                    $string = str_replace($keyword,$iframe.$website.$place_keywords, $string);
                 @endphp
-                <p>{!! $place->description !!}</p>
+                <p>{!! $string !!}</p>
 
             </div>
         </div>
