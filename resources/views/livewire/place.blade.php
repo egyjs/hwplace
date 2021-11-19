@@ -61,6 +61,12 @@
             </div>
             <div class="container-fluid">
                 <h1>{{ $place->name }}</h1>
+                @php
+                    $string = $place->description;
+                    $string = wordwrap($string, 150, ";;", true);
+                    $strings = explode(";;", $string);
+                    dd($strings);
+                @endphp
                 <p>{!! $place->description !!}</p>
 
             </div>

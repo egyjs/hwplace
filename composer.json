@@ -22,7 +22,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.6",
         "orangehill/iseed": "^3.0",
-        "spatie/laravel-sluggable": "^2.6.2",
+        "spatie/laravel-sluggable": "^3.1",
         "staudenmeir/belongs-to-through": "^2.5",
         "staudenmeir/eloquent-json-relations": "^1.1"
     },
@@ -50,7 +50,7 @@
         }
     },
     "scripts": {
-         "script:install": [
+        "script-install": [
             "@php artisan backpack:install",
             "@php artisan backpack:filemanager:install",
             "@php artisan migrate:refresh --seed"
