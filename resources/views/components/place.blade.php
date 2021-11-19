@@ -29,7 +29,7 @@
                     </small>
                 @endif
                 {{-- <p class="text-muted"><span class="glyphicon glyphicon-calendar"></span> July 23, 2014 @ 1:30 PM</p>--}}
-                <p>{!! \Illuminate\Support\Str::limit($place->description,rand(380,400)) !!}</p>
+                <p>{!! \Illuminate\Support\Str::limit($place->description,rand(100,200)) !!}</p>
                 <p class="text-muted">
                     محافظة <a href="javascript:void(0)">{{ $place->state->name }}</a>, <a href="#">{{  $place->city->name }}</a></p>
             </div>

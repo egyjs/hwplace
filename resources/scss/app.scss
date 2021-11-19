@@ -84,8 +84,8 @@ nav .nav-link{
 .filter {
     background: rgb(209,209,209);
     background: linear-gradient(25deg, rgba(209,209,209,1) 0%, rgba(245,245,245,1) 35%);
-    height: 85vh;
-    padding-top: 10%;
+    height: 66vh;
+    padding-top: 3%;
 }
 
 .form-filter1 form{
@@ -136,7 +136,7 @@ nav .nav-link{
 }
 
 .filter-btn p{
-    margin: 10px 0 25px 0;
+    //margin: 10px 0 25px 0;
 }
 
 .filter-btn p::after{
@@ -282,6 +282,9 @@ footer .social a span{
         height: auto;
         margin-bottom: 5%;
     }
+    .filter p{
+        display: none;
+    }
     .form-filter1{
         height: auto;
         margin-bottom: 5%;
@@ -390,6 +393,7 @@ footer .social a span{
         height: 50vh;
         margin-bottom: 5%;
     }
+
     .form-filter1{
         height: auto;
         margin-bottom: 5%;
