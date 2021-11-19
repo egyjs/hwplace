@@ -44,7 +44,8 @@
 @endpush
 @if($place->images)
     @php
-        $place->images = [$place->image.'?primary'] + $place->images
+        $place->images = array_merge([$place->image.'?primary'], $place->images);
+
     @endphp
 @endif
 <div>
