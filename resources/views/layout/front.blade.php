@@ -9,7 +9,7 @@
 {{--    @if(!request()->route()->uri == '/')--}}
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-rtl.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?v_day={{ date('ja') }}" rel="stylesheet">
 {{--    @else--}}
 {{--        <link rel="stylesheet" href="{{ asset('css/searchPageV2.build.min.css') }}">--}}
 {{--    @endif--}}
@@ -24,7 +24,7 @@
 @yield('content')
 
 
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}?v_day={{ date('ja') }}"></script>
 @livewireScripts
 @stack('js')
 @yield('js')
