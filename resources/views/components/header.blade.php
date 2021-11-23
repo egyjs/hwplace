@@ -1,5 +1,5 @@
 @php
-    $sections = \App\Models\Section::whereHas('ad')->get();
+    $sections = \App\Models\Section::get();
 @endphp
 <!--start navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark">
