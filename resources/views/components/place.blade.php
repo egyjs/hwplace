@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-3 card-img">
             <a href="{{ route('place',$place->slug)  }}">
-                <img class="card-img" src="{{ $place->image }}" alt="" width="100%">
+                <img class="card-img" src="{{ url($place->image) }}" alt="" width="100%">
             </a>
         </div>
         <div class="col-md-9">
