@@ -88,7 +88,10 @@
                 </h1>
                 @php
                     $iframe = $place->google_map_location;
-                    $website = '<a style="direction: ltr;" class="place-website-link btn btn-dark btn-block " target="_blank" href="'.$place->website.'">'.$place->website.'</a>';
+                    $website = '';
+                    if ($place->website){
+                        $website = '<a style="direction: ltr;" class="place-website-link btn btn-dark btn-block " target="_blank" href="'.$place->website.'">'.$place->website.'</a>';
+                    }
                     $place_keywords = $place->keywords;
                     $place_keywords = explode(',',$place_keywords);
                     $place_keywords = '<div class="badge badge-primary place-keyword">'.implode('</div><div class="badge badge-primary place-keyword">',$place_keywords).'</div>';

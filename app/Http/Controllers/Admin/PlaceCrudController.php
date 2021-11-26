@@ -99,7 +99,7 @@ class PlaceCrudController extends CrudController
             'name' => 'website',
             'type' => 'url'
         ]);
-//        CRUD::field('rates');
+        CRUD::field('rates')->type('number')->max(5);
 //        CRUD::field('keywords');
         $this->crud->addField([
             'name'=>'keywords',
