@@ -11,7 +11,7 @@ class HomeAdvertisements extends Component
 
     public function mount()
     {
-        $this->advertisements = Advertisement::with('places')->get();
+        $this->advertisements = Advertisement::with(['places','places.city','places.state'])->get();
     }
 
 
