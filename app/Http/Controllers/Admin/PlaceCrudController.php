@@ -86,13 +86,14 @@ class PlaceCrudController extends CrudController
 
         CRUD::addField([   // Upload
             'name'      => 'image',
-            'type'      => 'browse',
+            'type'      => 'upload_ajax',
         ]);
 
         CRUD::addField([   // Upload
             'name'      => 'images',
-         //   'upload'    => true
-            'type'      => 'browse_multiple',
+            'upload'    => true,
+            'prefix'    => 'uploads',
+            'type'      => 'upload_multiple_ajax',
         ]);
         CRUD::field('google_map_location');
         CRUD::addField([

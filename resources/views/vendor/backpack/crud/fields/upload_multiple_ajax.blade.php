@@ -1,0 +1,141 @@
+@php
+    $field['wrapper'] = $field['wrapper'] ?? $field['wrapperAttributes'] ?? [];
+    $field['wrapper']['data-init-function'] = $field['wrapper']['data-init-function'] ?? 'bpFieldInitUploadMultipleElement';
+    $field['wrapper']['data-field-name'] = $field['wrapper']['data-field-name'] ?? $field['name'];
+@endphp
+
+<!-- upload multiple input -->
+@include('crud::fields.inc.wrapper_start')
+    <label>{!! $field['label'] !!}</label>
+    @include('crud::fields.inc.translatable_icon')
+
+	{{-- Show the file name and a "Clear" button on EDIT form. --}}
+	@if (isset($field['value']))
+	@php
+		if (is_string($field['value'])) {
+			$values = json_decode($field['value'], true) ?? [];
+		} else {
+			$values = $field['value'];
+		}
+	@endphp
+
+
+    @endif
+<div class="well well-sm existing-file">
+    @if (isset($field['value']) && count($values))
+        @foreach($values as $key => $file_path)
+            <div class="file-preview">
+                @if (isset($field['temporary']))
+                    <a target="_blank" href="{{ isset($field['disk'])?asset(\Storage::disk($field['disk'])->temporaryUrl($file_path, Carbon\Carbon::now()->addMinutes($field['temporary']))):asset($file_path) }}">{{ $file_path }}</a>
+                @else
+                    <a target="_blank" href="{{ isset($field['disk'])?asset(\Storage::disk($field['disk'])->url($file_path)):asset($file_path) }}">{{ $file_path }}</a>
+                @endif
+                <a href="#" class="btn btn-light btn-sm float-right file-clear-button" title="Clear file" data-filename="{{ $file_path }}"><i class="la la-remove"></i></a>
+                <div class="clearfix"></div>
+            </div>
+        @endforeach
+    @endif
+</div>
+
+	{{-- Show the file picker on CREATE form. --}}
+	<input name="{{ $field['name'] }}"
+           type="hidden"
+           value="{{ old(square_brackets_to_dots($field['name'])) ?? implode(',',$field['value']) ?? $field['default'] ?? '' }}"
+    >
+	<div class="backstrap-file mt-2">
+		<input
+	        type="file"
+{{--	        name="{{ $field['name'] }}[]"--}}
+	        @include('crud::fields.inc.attributes', ['default_class' =>  isset($field['value']) && $field['value']!=null?'file_input backstrap-file-input':'file_input backstrap-file-input'])
+	        multiple
+	    >
+        <label class="backstrap-file-label" for="customFile"></label>
+    </div>
+
+    {{-- HINT --}}
+    @if (isset($field['hint']))
+        <p class="help-block">{!! $field['hint'] !!}</p>
+    @endif
+@include('crud::fields.inc.wrapper_end')
+
+{{-- ########################################## --}}
+{{-- Extra CSS and JS for this particular field --}}
+{{-- If a field type is shown multiple times on a form, the CSS and JS will only be loaded once --}}
+@if ($crud->fieldTypeNotLoaded($field))
+    @php
+        $crud->markFieldTypeAsLoaded($field);
+    @endphp
+
+    @push('crud_fields_scripts')
+        <!-- no scripts -->
+        <script>
+        	function bpFieldInitUploadMultipleElement(element) {
+        		var fieldName = element.attr('data-field-name');
+        		var clearFileButton = element.find(".file-clear-button");
+        		var fileInput = element.find("input[type=file]");
+        		var inputLabel = element.find("label.backstrap-file-label");
+
+		        clearFileButton.click(function(e) {
+		        	e.preventDefault();
+		        	var container = $(this).parent().parent();
+		        	var parent = $(this).parent();
+		        	// remove the filename and button
+		        	parent.remove();
+		        	// if the file container is empty, remove it
+		        	if ($.trim(container.html())=='') {
+		        		container.remove();
+		        	}
+		        	$("<input type='hidden' name='clear_"+fieldName+"' value='"+$(this).data('filename')+"'>").insertAfter(fileInput);
+		        });
+
+		        fileInput.change(function() {
+	                inputLabel.html("Files selected. After save, they will show up above.");
+		        	// remove the hidden input, so that the setXAttribute method is no longer triggered
+                    // upload the file using ajax
+                    let formData = new FormData();
+
+                    let TotalFiles = fileInput.prop('files').length; //Total files
+                    let files = fileInput.prop('files');
+                    for (let i = 0; i < TotalFiles; i++) {
+                        formData.append('file['+i+']', files[i]);
+                    }
+                    formData.append('TotalFiles', TotalFiles);
+
+
+                    // ajax request
+                    $.ajax({
+                        url: '{{ route("admin.uploadFiles") }}',
+                        type: 'POST',
+                        data: formData,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false,
+                        success: function(data) {
+                            if (data.success) {
+                                // add value to input fieldName
+                                $('[name="'+fieldName+'"]').val(data.success.join(','));
+                                let $htmlFilePreview = '';
+                                for (let i = 0; i < data.success.length; i++) {
+                                    $htmlFilePreview += '<div class="file-preview">';
+                                    $htmlFilePreview += '<a target="_blank" href="'+data.success[i]+'">'+data.success[i]+'</a>';
+                                    $htmlFilePreview += '<a href="#" class="btn btn-light btn-sm float-right file-clear-button" title="Clear file" data-filename="'+data.success[i]+'"><i class="la la-remove"></i></a>';
+                                    $htmlFilePreview += '<div class="clearfix"></div>';
+                                    $htmlFilePreview += '</div>';
+
+                                }
+                                console.log($htmlFilePreview)
+                                $('.existing-file').html($htmlFilePreview);
+                            } else {
+                                alert(data.error);
+                            }
+                        },
+                        error: function(data) {
+                            alert('An error occurred uploading the file.');
+                        }
+                    });
+					// $(this).next("input[type=hidden]:not([name='clear_"+fieldName+"[]'])").remove();
+		        });
+        	}
+        </script>
+    @endpush
+@endif

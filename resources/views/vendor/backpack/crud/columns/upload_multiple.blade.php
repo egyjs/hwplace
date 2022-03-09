@@ -1,6 +1,6 @@
 @php
     $value = data_get($entry, $column['name']);
-    if (is_string($value)) $value = json_decode($value);
+    if (is_string($value)) $value = json_decode($value,true);
     if (empty($value)) $value = [];
     $column['prefix'] = $column['prefix'] ?? '';
     $column['disk'] = $column['disk'] ?? null;

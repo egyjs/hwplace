@@ -47,6 +47,11 @@
                 </li>
             </ul>
             <div class="my-2 my-lg-0 nav-social">
+                <a href="{{ "#!" }}">
+                    <span>
+                        <i class="fa fa-language"></i>
+                    </span>
+                </a>
                 <a href="#">
                     <span>
                         <i class="fab fa-instagram"></i>

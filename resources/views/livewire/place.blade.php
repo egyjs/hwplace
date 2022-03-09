@@ -41,7 +41,6 @@
             width: 100% !important;
         }
         .place-info{
-            float: left;
             max-width: 100%;
             border: 2px solid #ddd;
             padding: 12px;
@@ -92,26 +91,17 @@
                     if ($place->website){
                         $website = '<a style="direction: ltr;" class="place-website-link btn btn-dark btn-block " target="_blank" href="'.$place->website.'">'.$place->website.'</a>';
                     }
-                    $place_keywords = $place->keywords;
-                    $place_keywords = explode(',',$place_keywords);
-                    $place_keywords = '<div class="badge badge-primary place-keyword">'.implode('</div><div class="badge badge-primary place-keyword">',$place_keywords).'</div>';
+                    //$place_keywords = $place->keywords;
+                    //$place_keywords = explode(',',$place_keywords);
+                    //$place_keywords = '<div class="badge badge-primary place-keyword">'.implode('</div><div class="badge badge-primary place-keyword">',$place_keywords).'</div>';
 
-                    $keyword = ';;;';
-                    $divWithKeyword = "<div class='place-info align-left' >$keyword</div>";
+                    $info = "<div class='place-info' >".$iframe.$website."</div>";
 
 
                     $string = $place->description;
-                    $stringExploded = explode(" ",$string);
-                    if (count($stringExploded) > 100){
-                        array_splice( $stringExploded, 100, 0, [$divWithKeyword] );
-                    }else{
-                        $stringExploded[] = $divWithKeyword;
-                    }
-                    $string = implode(" ",$stringExploded);
-                    $string = str_replace($keyword,$iframe.$website.$place_keywords, $string);
                 @endphp
                 <p>{!! $string !!}</p>
-
+                {!! $info !!}
             </div>
         </div>
     </div>

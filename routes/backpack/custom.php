@@ -25,4 +25,6 @@ Route::group([
     Route::crud('place-ad', 'PlaceAdCrudController');
     Route::get('charts/weekly-users', 'Charts\WeeklyUsersChartController@response')->name('charts.weekly-users.index');
     Route::crud('section-ad', 'SectionAdCrudController');
+    // upload ajax files
+    Route::post('uploadFiles', 'UploadAjaxFileController@upload')->name('admin.uploadFiles');
 }); // this should be the absolute last line of this file
