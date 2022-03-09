@@ -47,7 +47,7 @@
                 </li>
             </ul>
             <div class="my-2 my-lg-0 nav-social">
-                <a href="https://hwplace-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=ar&_x_tr_hl=ar&_x_tr_pto=wapp">
+                <a href="https://hwplace-com.translate.goog/?_x_tr_sl=ar&_x_tr_tl=en&_x_tr_hl=ar&_x_tr_pto=wapp">
                     <span>
                         <i class="fa fa-language"></i>
                     </span>
