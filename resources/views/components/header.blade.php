@@ -47,7 +47,7 @@
                 </li>
             </ul>
             <div class="my-2 my-lg-0 nav-social">
-                <a href="{{ "#!" }}">
+                <a href="{{ "https://hwplace-com.translate.goog/" }}">
                     <span>
                         <i class="fa fa-language"></i>
                     </span>
